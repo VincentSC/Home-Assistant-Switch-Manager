@@ -1,0 +1,48 @@
+## https://www.zigbee2mqtt.io/devices/ZMS-206US-4.html
+## Be warned: this device is chatty!
+name: Zemismart SMS-206 4 Button
+service: Zigbee2MQTT
+event_type: mqtt
+mqtt_topic_format: zigbee2mqtt/+
+mqtt_sub_topics: true
+buttons:
+  ## Numbering goes from 4 at the top, to 1 at the bottom
+  ## The templates make sure that the repeated states are ignored
+  - x: 0
+    y: 0
+    width: 500
+    height: 190
+    actions:
+      - title: "on"
+        conditions: "{{ data.button_last_state[0].action != 0 and data.state_l4 == 'ON' }}"
+      - title: "off"
+        conditions: "{{ data.button_last_state[0].action != 1 and data.state_l4 == 'OFF' }}"
+  - x: 0
+    y: 190
+    width: 500
+    height: 190
+    actions:
+      - title: "on"
+        conditions: "{{ data.button_last_state[1].action != 0 and data.state_l3 == 'ON' }}"
+      - title: "off"
+        conditions: "{{ data.button_last_state[1].action != 1 and data.state_l3 == 'OFF' }}"
+  - x: 0
+    y: 380
+    width: 500
+    height: 190
+    actions:
+      - title: "on"
+        conditions: "{{ data.button_last_state[2].action != 0 and data.state_l2 == 'ON' }}"
+      - title: "off"
+        conditions: "{{ data.button_last_state[2].action != 1 and data.state_l2 == 'OFF' }}"
+  - x: 0
+    y: 570
+    width: 500
+    height: 190
+    actions:
+      - title: "on"
+        conditions: "{{ data.button_last_state[3].action != 0 and data.state_l1 == 'ON' }}"
+      - title: "off"
+        conditions: "{{ data.button_last_state[3].action != 1 and data.state_l1 == 'OFF' }}"
+
+
